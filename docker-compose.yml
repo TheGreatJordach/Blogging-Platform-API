@@ -1,0 +1,23 @@
+version: '3.8'  # or your preferred version
+
+services:
+  db:
+    image: mysql:latest  # Use the latest MySQL image
+    restart: always
+    container_name: admin-db
+    environment:
+     # MYSQL_USER: ${DATASOURCE_USERNAME}       # MySQL username
+      MYSQL_ROOT_PASSWORD: ${DATASOURCE_PASSWORD}   # MySQL password
+      MYSQL_DATABASE: ${DATASOURCE_DATABASE}   # MySQL database name
+    ports:
+      - "${DATASOURCE_PORT}:3306"  # Ensure DATASOURCE_PORT is set correctly
+    volumes:
+      - db-data:/var/lib/mysql  # Path for MySQL data storage
+    healthcheck:
+      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u $${MYSQL_USER} -p$${MYSQL_ROOT_PASSWORD}"]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  db-data:
