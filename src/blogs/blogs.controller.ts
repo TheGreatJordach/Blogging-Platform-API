@@ -8,6 +8,7 @@ import {
   Param,
   Post,
   Put,
+  Query,
 } from "@nestjs/common";
 import { ApiBody, ApiResponse } from "@nestjs/swagger";
 import { CreatePostDto } from "./dto/create.post.dto";
@@ -58,5 +59,12 @@ export class BlogsController {
   @Get(":id")
   async gerOne(@Param() { id }: IdDto) {
     return await this.blogsService.getOne(id);
+  }
+
+  @HttpCode(HttpStatus.OK)
+  @ApiResponse({ status: 200, description: "Retrieve one  " })
+  @Get(":id")
+  async gerAllPost(@Query("term") term: string) {
+    return await this.blogsService.findAll(term);
   }
 }

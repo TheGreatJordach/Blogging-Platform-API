@@ -4,11 +4,12 @@ import {
   InternalServerErrorException,
   Logger,
   NotFoundException,
+  Query,
 } from "@nestjs/common";
 import { CreatePostDto } from "./dto/create.post.dto";
 import { BlogPost } from "./entity/entity.post";
 import { InjectRepository } from "@nestjs/typeorm";
-import { Repository } from "typeorm";
+import { ILike, Repository } from "typeorm";
 import { UpdatePostDto } from "./dto/update.post.dto";
 
 @Injectable()
@@ -74,5 +75,15 @@ export class BlogsService {
       this.logger.log(`Cause of failure : ${error.message}`);
       throw new InternalServerErrorException();
     }
+  }
+
+  async findAll(term: string): Promise<BlogPost[]> {
+    if (term) {
+      return await this.blogPostRepository.find({
+        where: [{ title: ILike(`%${term}%`) }, { content: ILike(`%${term}%`) }],
+      });
+    }
+    // If no search term is provided, return all posts
+    return this.blogPostRepository.find();
   }
 }

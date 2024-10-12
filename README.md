@@ -22,10 +22,21 @@
   <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
   [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Project Description from 
+Project Link > https://roadmap.sh/projects/blogging-platform-api
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+**Blogging Platform API**
+Build a RESTful API for a personal blogging platform
 
+##  Requirements
+Create a RESTful API for a personal blogging platform. The API should allow users to perform the following operations:
+
+* Create a new blog post
+* Update an existing blog post
+* Delete an existing blog post
+* Get a single blog post
+* Get all blog posts
+* Filter blog posts by a search term
 ## Installation
 
 ```bash
@@ -64,9 +75,8 @@ Nest is an MIT-licensed open source project. It can grow thanks to the sponsors 
 
 ## Stay in touch
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+- Author - [Jordach Makaya](https://kamilmysliwiec.com)
+
 
 ## License
 
