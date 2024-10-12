@@ -1,20 +1,18 @@
-version: '3.8'  # or your preferred version
-
 services:
   db:
-    image: mysql:latest  # Use the latest MySQL image
+    image: postgres
     restart: always
     container_name: admin-db
     environment:
-     # MYSQL_USER: ${DATASOURCE_USERNAME}       # MySQL username
-      MYSQL_ROOT_PASSWORD: ${DATASOURCE_PASSWORD}   # MySQL password
-      MYSQL_DATABASE: ${DATASOURCE_DATABASE}   # MySQL database name
+      POSTGRES_USER: ${DATASOURCE_USERNAME}
+      POSTGRES_PASSWORD: ${DATASOURCE_PASSWORD}
+      POSTGRES_DB: ${DATASOURCE_DATABASE}
     ports:
-      - "${DATASOURCE_PORT}:3306"  # Ensure DATASOURCE_PORT is set correctly
+      - "${DATASOURCE_PORT}:5432"
     volumes:
-      - db-data:/var/lib/mysql  # Path for MySQL data storage
+      - db-data:/var/lib/postgres
     healthcheck:
-      test: ["CMD-SHELL", "mysqladmin ping -h localhost -u $${MYSQL_USER} -p$${MYSQL_ROOT_PASSWORD}"]
+      test: [ "CMD-SHELL", "pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}" ]
       interval: 10s
       timeout: 5s
       retries: 3

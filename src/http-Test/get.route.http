@@ -1,0 +1,51 @@
+### GET ALL
+GET http://localhost:3000/api/blog
+Content-Type: application/json
+
+
+### GET ONE
+GET http://localhost:3000/api/blog/1
+Content-Type: application/json
+
+### Send POST request with json body
+POST https://examples.http-client.intellij.net/post
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+
+### Send POST request with json body
+POST http://localhost:3000/api/posts
+Content-Type: application/json
+
+{
+  "title": "My First Blog Post",
+  "content": "This is the content of my first blog post.",
+  "category": "Technology",
+  "tags": ["Tech", "Programming"]
+}
+### Send POST request with json body
+PUT http://localhost:3000/api/posts/2
+Content-Type: application/json
+
+{
+  "title": "My Second Blog Post",
+  "content": "This is the content of my first blog post.",
+  "category": "Technology",
+  "tags": ["Tech", "Programming"]
+}
+### DELETE ONE
+DELETE http://localhost:3000/api/posts/1
+Content-Type: application/json
+
+### GET ONE
+GET http://localhost:3000/api/posts/1
+Content-Type: application/json
+
+
+### GET ALL
+GET http://localhost:3000/api/posts
+Content-Type: application/json
